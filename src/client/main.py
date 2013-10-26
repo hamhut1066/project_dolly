@@ -1,20 +1,39 @@
-#client example
-import socket
+#!/usr/bin/env python
 
-client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client_socket.connect(('localhost', 5000))
+import httplib
+import sys
 
-while 1:
-    data = client_socket.recv(512)
-    if ( data == 'q' or data == 'Q'):
-        client_socket.close()
-        break;
-    else:
-        print("RECIEVED:" , data)
-        data = raw_input ( "SEND( TYPE q or Q to Quit):" )
-        if (data != 'Q' and data != 'q')):
-            client_socket.send(data)
-        else:
-            client_socket.send(data)
-            client_socket.close()
-            break;
+class Test:
+
+    a = ""
+    def __init__(self):
+        self.a = "hello"
+
+    def __getitem__(self):
+        return self.a
+
+#get http server ip
+http_server = "127.0.0.1"
+port = 5000
+#create a connection
+conn = httplib.HTTPConnection(http_server, port)
+
+i = 0
+while i < 1:
+    i+=1
+    #this can be changed to take user input
+    cmd = Test()
+
+    cmd.a = "goodbye"
+    #request command to server
+    conn.request("GET", cmd.a)
+
+    #get response from server
+    rsp = conn.getresponse()
+    
+    #print server response and data
+    print(rsp.status, rsp.reason)
+    data_received = rsp.read()
+    print(data_received)
+    
+conn.close()
