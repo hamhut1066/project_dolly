@@ -5,6 +5,7 @@ import os
 
 #Create custom HTTPRequestHandler class
 class KodeFunHTTPRequestHandler(BaseHTTPRequestHandler):
+    count = 0
     
     #handle GET command
     def do_GET(self):
@@ -23,7 +24,7 @@ class KodeFunHTTPRequestHandler(BaseHTTPRequestHandler):
             self.wfile.write(self.path)
             #f.close()
             #output log for sucessful connection
-            print "connection from ", self.client_address, " sucessful" 
+            print "connection from ", self.client_address ," sucessful"
             return
             
         except IOError:

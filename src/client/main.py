@@ -19,11 +19,12 @@ port = 5000
 conn = httplib.HTTPConnection(http_server, port)
 
 i = 0
-while i < 10:
+while i < 1:
     i+=1
     #this can be changed to take user input
     cmd = Test()
 
+    cmd.a = "goodbye"
     #request command to server
     conn.request("GET", cmd.a)
 
