@@ -6,15 +6,15 @@ import sys
 
 class Database:
 
-    def __init__(self):
-        pass
+    def __init__(self, db):
+        self.db = db
 
 
 
 
 
     def connect(self):
-        con = lite.connect('test.db')
+        con = lite.connect(db)
         with con:
 
             #connect to database
