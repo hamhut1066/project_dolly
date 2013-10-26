@@ -1,13 +1,9 @@
 #!/usr/bin/python2
 #this class will start the server and wait for connections
 
-import database
+#start the server
 
-#the database instance used for all communication
-db = database.Database()
+from server import *
 
-#a = meh.query("SELECT * from cars")
-
-#print(a[1])
-
-#needs to wait for a connection from the client
+#this starts the server listening for connections on port 5000
+run()

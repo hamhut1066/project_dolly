@@ -4,4 +4,3 @@ class Port:
 		self.number = number
 		self.status = status
 		self.protocol = protocol
-		
