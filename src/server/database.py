@@ -6,7 +6,7 @@ import sys
 
 class Database:
 
-    def __init__(self, db):
+    def __init__(self, db="test.db"):
         self.db = db
 
 
@@ -14,7 +14,7 @@ class Database:
 
 
     def connect(self):
-        con = lite.connect(db)
+        con = lite.connect(self.db)
         with con:
 
             #connect to database
@@ -28,3 +28,7 @@ class Database:
         cur.execute(string)
         return cur.fetchone()
 
+    def update(self, string=""):
+        cur = self.connect()
+        cur.execute(string)
+        return cur.fetchone()
