@@ -9,9 +9,11 @@ prompt = ">"
 while 1:
     user = AssignValues()
     data = "login:" + user.name
-    if con.send(data) == "true":
+    return_val = con.send(data)
+    if return_val == "true":
         #the user exists and he can start playing
         break
+    print return_val
 #they now reach a menu system that gives them a set of options
 
 print '''
