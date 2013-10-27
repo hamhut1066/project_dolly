@@ -28,15 +28,3 @@ class Database:
         cur.execute(string)
         return cur.fetchone()
 
-    def test(self):
-        return "hello"
-
-
-
-class Test:
-
-    def __init__(self):
-        self.a = 5
-
-
-

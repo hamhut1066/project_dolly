@@ -8,7 +8,8 @@ class User:
 		self.computers = get_computers
 
 	def user_creation(self, db):
-		"""user creation returns error string if unsuccessfull"""
+		"""user creation returns error string if unsuccessful"""
+
 		if ((db.query("select '%s' from db") % (self.name)) != self.name):
 			db.update("insert '%s") % (self.name)
 			return null
