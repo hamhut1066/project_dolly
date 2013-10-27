@@ -2,16 +2,18 @@
 
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 import os
+from evaluate import *
 
 #Create custom HTTPRequestHandler class
 class KodeFunHTTPRequestHandler(BaseHTTPRequestHandler):
-    count = 0
     
     #handle GET command
     def do_GET(self):
         rootdir = './' #file location
         try:
             #f = open(rootdir + self.path) #open requested file
+            ev = Evaluate()
+            data = ev.read(self.path)
 
             #send code 200 response
             self.send_response(200)
@@ -21,10 +23,10 @@ class KodeFunHTTPRequestHandler(BaseHTTPRequestHandler):
             self.end_headers()
 
             #send file content to client
-            self.wfile.write(self.path)
+            self.wfile.write(data)
             #f.close()
             #output log for sucessful connection
-            print "connection from ", self.client_address ," sucessful"
+            print "connection from ", self.client_address ," successful"
             return
             
         except IOError:
